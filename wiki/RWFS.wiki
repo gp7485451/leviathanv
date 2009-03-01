@@ -1,4 +1,4 @@
-#RWFS Design Doc
+#summary RWFS Design Doc
 Copyright (C) Kristian Hart 2009
 
 = Introduction =
