@@ -1,4 +1,5 @@
 #summary RWFS Design Doc
+#labels RWFS,Phase-Implementation
 Copyright (C) Kristian Hart 2009
 
 = Introduction =
@@ -7,7 +8,7 @@ It accomplishes this by add further dividing disks into large blocks called bloc
 
 =Layout=
 The first four sectors(2kb) of the disk are reserved for bootcode or whatever an OS wants to do with them. Next comes the FS_DESCRIPTOR structure in the first sector after the reserved sector. Next comes the DS_ENTRY blocks that define the directory structure. Each at the end of the first DS_ENTRY blocks is a BLOCK_ARRAY_ENTRY that points to another section of DS_ENTRIES that extend the directory structure (and so on with the next section of DS_ENTRIES). Next, comes the FD_ENTRIES that are organized much like the DS_ENTRIES.
-After all this comes the list of free blocks and then the bad sectors bitmap. The bitmap is just a series of bytes 1 for bad and 0 for ok.
+After all this comes the list of free blocks. You can see their structure below.
 
 ==Structures==
 These are the structures that define the filesystem.
