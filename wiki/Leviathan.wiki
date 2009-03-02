@@ -21,4 +21,8 @@ Leviathan achieves a lack of bloat through a Hybrid Kernel. This way, for speed 
   * Preemptive Multitasking
   * ELF Executables
  
-
+*Planned For Version 1.5.0*
+----
+  * GUI
+  * Assembler
+  *Text Editor
