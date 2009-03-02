@@ -25,4 +25,4 @@ Leviathan achieves a lack of bloat through a Hybrid Kernel. This way, for speed 
 ----
   * GUI
   * Assembler
-  *Text Editor
+  * Text Editor
