@@ -25,4 +25,4 @@ stackstart:
 drive: db 0 ;this is where we store the drive we booted from
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 times 510-($-$$) db 0 ;;make sure the file is 512 bytes
-db 0xAA55;//magic number tells bios this is bootable
+dw 0xAA55;//magic number tells bios this is bootable
