@@ -10,6 +10,8 @@ there needs to be a new operating system created, that is not bloated and can be
 
 Leviathan achieves a lack of bloat through a Hybrid Kernel. This way, for speed purposes, some modules can be run in kernel land and if a feature is wanted it can be added in user land. This way the kernel is small and manageable, while being very extensible.
 
+==Design Doc Links==
+  * [http://code.google.com/p/leviathanv/wiki/RWFS RWFS Design]
 
 =Intended OS Features=
 
