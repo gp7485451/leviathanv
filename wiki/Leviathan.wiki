@@ -18,6 +18,7 @@ Leviathan achieves a lack of bloat through a Hybrid Kernel. This way, for speed 
   * RWFS File System Module - 500 million exabytes of possible storage!
   * Virtual File System - many filesystems can be read
   * Virtual Disk System - allows for multiple disks to be treated as one
+  * Complete Device Driver Interface
   * Preemptive Multitasking
   * ELF Executables
  
