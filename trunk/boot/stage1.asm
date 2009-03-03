@@ -44,7 +44,8 @@ jmp testandset ;we are not done
 
 
 continue: ;here is where the rest of the code comes in
-
+mov si,randstring
+call bios_print
 hlt ; halt cpu for now
 
 FAIL:
@@ -92,6 +93,17 @@ ret ;on succeed, return to main code
 ;TEMP = LBA % (HPC * SPT)
 ;HEAD = TEMP / SPT
 ;SECT = TEMP % SPT + 1
+
+
+bios_print: ;I was too lazy too actually right this so thanks babystep2...
+   lodsb
+   or al, al  ;zero=end of str
+   jz done    ;get out
+   mov ah, 0x0E
+   int 0x10
+   jmp bios_print
+done:
+   ret
 ;;;;;;;;;;;;;;;;;DATA AREA;;;;;;;;;;;;;;;;;;;
 stackend:
 times 10 dw 0 ; we only need a small stack
@@ -105,6 +117,8 @@ CYL: db 0     ;cylinder to read from
 HEAD: db 0 ;HEAD to read from
 SECTOR: db 0 ;sector to read  from
 BUFFERPOINTER: dw 0; address to read sectors to
+
+randstring: db "I WIN BIZATCHES"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 times 510-($-$$) db 0 ;;make sure the file is 512 bytes
 dw 0xAA55;//magic number tells bios this is bootable
