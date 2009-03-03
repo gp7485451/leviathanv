@@ -85,6 +85,7 @@ je FAIL ;failed to read sectors
 int 0x13
 inc BYTE [counter]
 jc startread ; try again if failed the first 3 times
+ret ;on succeed, return to main code
 
 ;CYL = LBA / (HPC * SPT)
 ;TEMP = LBA % (HPC * SPT)
