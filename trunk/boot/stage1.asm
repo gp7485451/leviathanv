@@ -12,17 +12,49 @@ push ax; set all segments
 pop ds
 push ax
 pop es    ;done setting segments
+push ax
+pop di ;;;;;;;set for getting drive information
 mov BYTE[drive],dl     ; store the boot drive
+;;;;;;;;;;;;;;;Load next 3 Sectors To complete stage1;;;;;;;;;;;;;;;;;;
+mov ah,0x08
+mov dl,BYTE [drive] 
+int 0x13        ; get drive parameters
+jc FAIL     ;did this faiL?
+;else store info for LBA TO CHS
+mov BYTE [HPC], dh ;//store heads per cylinder 
+
+mov ax,0 ;; start counter for all the bits
+
+testandset: ; tests and sets all the sector bits in cl
+bt cx,ax     ; test bit
+jc set       ; is the bit set? if yes set it in SPT
+inc ax    ; if no go to next bit and test set
+cmp ax,6
+je continue ;if we are finished, continue with the rest of  the code
+jmp testandset
 
 
+set:
+bts WORD [SPT],ax
+inc ax
+cmp ax,6
+je continue ;if done setting, continue
+jmp testandset ;we are not done
+;CL = maximum sector number (bits 5-0)
 
 
+continue: ;here is where the rest of the code comes in
+
+FAIL:
+int 0x19 ;reboot
 ;;;;;;;;;;;;;;;;;DATA AREA;;;;;;;;;;;;;;;;;;;
 stackend:
 times 10 dw 0 ; we only need a small stack
 stackstart:
 
 drive: db 0 ;this is where we store the drive we booted from
+HPC: db 0     ;heads per cylinder
+SPT: dw 0     ;sectors per track
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 times 510-($-$$) db 0 ;;make sure the file is 512 bytes
 dw 0xAA55;//magic number tells bios this is bootable
