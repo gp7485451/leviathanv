@@ -44,6 +44,7 @@ jmp testandset ;we are not done
 
 
 continue: ;here is where the rest of the code comes in
+
 hlt ; halt cpu for now
 
 FAIL:
@@ -51,7 +52,7 @@ int 0x19 ;reboot
 
 
 ;;;;;;;;;;FUNCTIONS;;;;;;;;;;;;;;
-readsector: ;ax = address to read to,   bx = lba
+readsector: ;ax = address to read to,   bx = lba, on the stack is an 16 bit number specifying number of sectors to read
 push ax ;save address to  read to
 mov ax,WORD [SPT]
 mov cl,BYTE[HPC]
@@ -78,7 +79,7 @@ mov dl, BYTE [drive]
 mov dh, BYTE [HEAD]
 mov cl, BYTE [SECTOR]
 mov ch, BYTE [CYL]
-mov al,1 ;always read one sector
+pop ax ;set number of sectors to read
 mov ah,0x02 ; int 0x13 read sector function
 cmp BYTE [counter],4
 je FAIL ;failed to read sectors
