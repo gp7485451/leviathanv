@@ -4,7 +4,7 @@ Copyright (C) 2009 Kristian Hart
 = Introduction =
 
 I believe that for operating systems to *truly* improve in this period in time,
-there needs to be a new operating system created, that is not bloated and can be expanded upon easily. 
+there needs to be a new operating system created, that is not bloated and can be expanded upon easily. Adding new *Features* inside the kernel just adds more bugs. The only thing the kernel really needs to do is manage how software interacts with the hardware, nothing else.
 
 =Kernel=
 
