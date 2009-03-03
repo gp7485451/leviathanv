@@ -16,7 +16,6 @@ These are the structures that define the filesystem.
 {{{
  
 /*Copyright (C) Kristian Hart 2009*/
-
 typedef struct
 {
     unsigned short version_id; //allow for reading different versions of the filesystem
@@ -27,6 +26,7 @@ typedef struct
     unsigned int   blocksections;//number of block sections
     unsigned int   num_file_entry_sectors;
     unsigned int   num_dir_struct_entry_sectors;
+    unsigned int   num_free_block_sectors;
 }FS_DESCRIPTOR;//structure that defines a filesystems characteristics
 
 typedef struct
