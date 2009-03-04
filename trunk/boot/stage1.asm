@@ -13,6 +13,8 @@ push cs
 pop es    ;done setting segments
 mov BYTE[drive],dl     ; store the boot drive
 ;;;;;;;;;;;;;;;Load next 3 Sectors To complete stage1;;;;;;;;;;;;;;;;;;
+
+
 mov ah,0x08
 mov dl,BYTE [drive] 
 int 0x13        ; get drive parameters
@@ -38,9 +40,7 @@ test ax,6
 je continue ;if done setting, continue
 jmp testandset ;we are not done
 ;CL = maximum sector number (bits 5-0)
-
-
-continue: ;here is where the rest of the code comes in
+continue:
 mov si,randstring
 call bios_print
 hlt ; halt cpu for now
@@ -95,7 +95,7 @@ ret ;on succeed, return to main code
 
 bios_print: ;I was too lazy too actually right this so thanks babystep2...
    lodsb
-   or al, al  ;zero=end of str
+   cmp al,0  ;zero=end of str
    jz done    ;get out
    mov ah, 0x0E
    int 0x10
@@ -116,7 +116,7 @@ HEAD: db 0 ;HEAD to read from
 SECTOR: db 0 ;sector to read  from
 BUFFERPOINTER: dw 0; address to read sectors to
 
-randstring: db "I WIN BIZATCHES"
+randstring: db 'I_WIN_BIZATCHES',0
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 times 510-($-$$) db 0 ;;make sure the file is 512 bytes
-dw 0xAA55;//magic number tells bios this is bootable
+dw 0xAA55;magic number tells bios this is bootable
