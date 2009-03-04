@@ -26,7 +26,7 @@ testandset: ; tests and sets all the sector bits in cl
 bt cx,ax     ; test bit
 jc set       ; is the bit set? if yes set it in SPT
 inc ax    ; if no go to next bit and test set
-cmp ax,6
+test ax,6
 je continue ;if we are finished, continue with the rest of  the code
 jmp testandset
 
@@ -34,7 +34,7 @@ jmp testandset
 set:
 bts WORD [SPT],ax
 inc ax
-cmp ax,6
+test ax,6
 je continue ;if done setting, continue
 jmp testandset ;we are not done
 ;CL = maximum sector number (bits 5-0)
