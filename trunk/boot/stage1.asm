@@ -2,7 +2,7 @@
 ;Assemble with FASM
 USE16 ;this is all 16 bit code
 ORG 0x7C00
-jmp 0x00:begin ;enforce address
+jmp begin ;enforce address
 
 
 begin:
