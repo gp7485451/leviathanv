@@ -2,18 +2,15 @@
 ;Assemble with FASM
 USE16 ;this is all 16 bit code
 ORG 0x7C00
-jmp begin ;enforce address
+jmp 0x00:begin ;enforce address
 
 
 begin:
-xor ax,ax  ;zero ax
 mov sp,stackstart
-push ax; set all segments
+push cs; THANKS TROY!
 pop ds
-push ax
+push cs
 pop es    ;done setting segments
-push ax
-pop di ;;;;;;;set for getting drive information
 mov BYTE[drive],dl     ; store the boot drive
 ;;;;;;;;;;;;;;;Load next 3 Sectors To complete stage1;;;;;;;;;;;;;;;;;;
 mov ah,0x08
@@ -49,8 +46,9 @@ call bios_print
 hlt ; halt cpu for now
 
 FAIL:
-int 0x19 ;reboot
-
+mov si,randstring
+call bios_print
+hlt;
 
 ;;;;;;;;;;FUNCTIONS;;;;;;;;;;;;;;
 readsector: ;ax = address to read to,   bx = lba, on the stack is an 16 bit number specifying number of sectors to read
