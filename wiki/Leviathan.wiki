@@ -23,6 +23,7 @@ Leviathan achieves a lack of bloat through a Hybrid Kernel. This way, for speed 
   * Complete Device Driver Interface
   * Preemptive Multitasking
   * ELF Executables
+  * Flat Executables
  
 *Planned For Version 1.5.0*
 ----
