@@ -1,0 +1,30 @@
+#summary Functions The System Provides For Applications
+#labels Phase-Implementation
+
+= Introduction =
+
+There are very few system calls needed for applications to function, and many functions of a system can be added in user land. However, some functions are necessary for applications to communicate with the system and other programs.
+
+=Signals and Messages=
+Signals are numbers sent between process that can be interpreted however an application deems necessary. Messages are much the same except they can send variable length amounts of data (structures),and are slower than signals. All communication between applications is done through shared pages. This way sending and receiving data can be done by a simple write to memory. 
+
+----
+1.
+{{{
+u8_t SendSig( PID_T reciever_id,u32_t sig);
+}}}
+
+2.
+
+{{{
+u32_t RecieveSig(PID_T sender_id);
+}}}
+
+3.
+
+{{{
+u8_t OpenSigLine(PID_T pid);
+}}}
+---
+
+The first function is very simple to figrue out. It sends a signal sig to a process with a Process ID reciever_id.
