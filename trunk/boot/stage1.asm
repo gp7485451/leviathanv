@@ -46,7 +46,7 @@ mov bx,2
 mov cx,1
 push cx
 call readsector
-jmp SecondPart
+call SecondPart
 hang:
 jmp hang
  ; halt cpu for now
@@ -58,48 +58,32 @@ hlt;
 
 ;;;;;;;;;;FUNCTIONS;;;;;;;;;;;;;;
 readsector: ;ax = address to read to, bx = lba, on the stack is an 16 bit number specifying number of sectors to read TODO:REWRITE
-push ax ;save address to read to
-mov ax,WORD [SPT]
-mov cl,BYTE[HPC]
-mul cx ; HPC *SPT
-mov dx,ax
+mov WORD [BUFFERPOINTER],ax ; save buffer address
 mov ax,bx
-div dx ;ax = LBA/ (HPC*SPT) dx = LBA % (HPC * SPT)
-mov BYTE [CYL],al ;save cylinder (dx is now the same as TEMP)
-xor bx,bx ;; bx = 0
-mov bl, BYTE [SPT] ; bx = SPT
-mov ax,dx
-div bx ; TEMP / SPT
-mov BYTE [HEAD],al ; save head
-inc dx ; TEMP % SPT +1
-mov BYTE [SECTOR],dl
-pop ax ; restore ax to read address
-mov WORD [BUFFERPOINTER],ax ;save buffer
-startread:; HERE IS WEAR WE START THE READ
-xor bx,bx
-push bx
-pop es ; make sure es is 0
-mov bx,WORD [BUFFERPOINTER] ;set data buffer for int 13h
-mov dl, BYTE [drive]
-mov dh, BYTE [HEAD]
-mov cl, BYTE [SECTOR]
-mov ch, BYTE [CYL]
-pop ax ;set number of sectors to read
-mov ah,0x02 ; int 0x13 read sector function
-cmp BYTE [counter],4
-je FAIL ;failed to read sectors
+div WORD[SPT]
+inc dx
+mov BYTE [SECTOR],dl ;store sector to read from
+mov cl,BYTE [HPC]
+div cx
+mov BYTE [CYL],dl ;store cylinder
+mov BYTE [HEAD],al
+
+mov ah,0x02
+pop cx ;get number of sectors to read
+mov al,cl
+mov ch,BYTE [CYL]
+mov cl,BYTE [SECTOR]
+mov dh,BYTE [HEAD]
+mov dl,BYTE [drive]
+mov bx,WORD [BUFFERPOINTER]
 int 0x13
-inc BYTE [counter]
-jc startread ; try again if failed the first 3 times
-ret ;on succeed, return to main code
+jc FAIL
 
-;CYL = LBA / (HPC * SPT)
-;TEMP = LBA % (HPC * SPT)
-;HEAD = TEMP / SPT
-;SECT = TEMP % SPT + 1
+;Sector = (LBA/SectorsPerTrack) Remainder value + 1
+;Cylinder = (LBA/SectorsPerTrack)/NumHeads (Take Remainder value)
+;Head = (LBA/SectorsPerTrack)/NumHeads (Take quotient value)
 
-
-bios_print: ;I was too lazy too actually right this so thanks babystep2...
+bios_print: ;I was too lazy to actually write this so thanks babystep2...
 lodsb
 or al,al ;zero=end of str
 jz done ;get out
