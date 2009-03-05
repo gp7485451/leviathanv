@@ -1,7 +1,6 @@
 ;Copyright (C) Kristian Hart 2009
 ;Assemble with FASM
 USE16 ;this is all 16 bit code
-ORG 0x7c00
 ORG 0x7C00
 jmp 0x00:begin ;enforce address
 
