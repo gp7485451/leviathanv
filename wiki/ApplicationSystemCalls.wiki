@@ -11,7 +11,7 @@ Signals are numbers sent between process that can be interpreted however an appl
 ----
 1.
 {{{
-u8_t SendSig( PID_T reciever_id,u32_t sig);
+u8_t SendSig( PID_T reciever_id,u32_t sig);//error if Signal Line isn't open
 }}}
 
 2.
@@ -23,8 +23,8 @@ u32_t RecieveSig(PID_T sender_id);
 3.
 
 {{{
-u8_t OpenSigLine(PID_T pid);
+u8_t OpenSigLine(PID_T pid);//error if process doesn't exist
 }}}
 ---
 
-The first function is very simple to figrue out. It sends a signal sig to a process with a Process ID reciever_id. The next function is even simpler and all it does is return a signal from a process sender_id. Lastly, OpenSigLine is a function that must be called by both processes before they can even begin to send and receive signals. This way, viruses or other malicious software cannot send a signal to a process that was not meant to communicate with it. 
+The first function is very simple to figrue out. It sends a signal sig to a process with a Process ID reciever_id. The next function is even simpler and all it does is return a signal from a process sender_id. Lastly, OpenSigLine is a function that must be called by both processes before they can even begin to send and receive signals. This way, viruses or other malicious software cannot send a signal to a process that was not meant to communicate with it. Function 1 and 3 both return 0 on error.
