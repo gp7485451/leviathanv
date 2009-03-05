@@ -116,7 +116,7 @@ HEAD: db 0 ;HEAD to read from
 SECTOR: db 0 ;sector to read from
 BUFFERPOINTER: dw 0; address to read sectors to
 
-randstring: db 'I_WIN_BIZATCHES',0
+randstring: db 'LOADING STAGE1...',0
 failone: db 'FAIL ONE',0
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 times 510-($-$$) db 0 ;;make sure the file is 512 bytes
