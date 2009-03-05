@@ -10,6 +10,9 @@ It accomplishes this by add further dividing disks into large blocks called bloc
 The first four sectors(2kb) of the disk are reserved for bootcode or whatever an OS wants to do with them. Next comes the FS_DESCRIPTOR structure in the first sector after the reserved sector. Next comes the DS_ENTRY blocks that define the directory structure. At the end of the first DS_ENTRY blocks is a BLOCK_ARRAY_ENTRY that points to another section of DS_ENTRIES that extend the directory structure (and so on with the next section of DS_ENTRIES). Next, comes the FD_ENTRIES that are organized much like the DS_ENTRIES.
 After all this comes the list of free blocks (Which also can be expanded like the DS_ENTRIES). You can see their structure below.
 
+----
+There is no entry for the root directory. It's ID is automatically 0 and has no name. Any file with a parent ID of zero belongs to the root directory.
+
 ==Structures==
 These are the structures that define the filesystem.
 ----
