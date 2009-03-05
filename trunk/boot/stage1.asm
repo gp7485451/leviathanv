@@ -41,6 +41,12 @@ jmp testandset ;we are not done
 continue:
 mov si,randstring
 call bios_print
+mov ax,SecondPart
+mov bx,2
+mov cx,1
+push cx
+call readsector
+jmp SecondPart
 hang:
 jmp hang
  ; halt cpu for now
@@ -51,7 +57,7 @@ call bios_print
 hlt;
 
 ;;;;;;;;;;FUNCTIONS;;;;;;;;;;;;;;
-readsector: ;ax = address to read to, bx = lba, on the stack is an 16 bit number specifying number of sectors to read
+readsector: ;ax = address to read to, bx = lba, on the stack is an 16 bit number specifying number of sectors to read TODO:REWRITE
 push ax ;save address to read to
 mov ax,WORD [SPT]
 mov cl,BYTE[HPC]
@@ -103,9 +109,7 @@ jmp bios_print
 done:
 ret
 ;;;;;;;;;;;;;;;;;DATA AREA;;;;;;;;;;;;;;;;;;;
-stackend:
-times 10 dw 0 ; we only need a small stack
-stackstart:
+
 counter: db 0
 drive: db 0 ;this is where we store the drive we booted from
 HPC: db 0 ;heads per cylinder
@@ -118,8 +122,13 @@ BUFFERPOINTER: dw 0; address to read sectors to
 
 randstring: db 'LOADING STAGE1...',0
 failone: db 'FAIL ONE',0
+loadedtwo: db 'LOADING STAGE1 COMPLETE'
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 times 510-($-$$) db 0 ;;make sure the file is 512 bytes
 dw 0xAA55;magic number tells bios this is bootable
-
+SecondPart:
+mov si,loadedtwo
+call bios_print
+hang2:
+jmp hang2
 
