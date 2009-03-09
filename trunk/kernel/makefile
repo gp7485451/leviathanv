@@ -19,7 +19,7 @@ cleanF: kernel
 	sudo rm *~ *.o
 
 install: kernel
-	sudo cp kernel /RiverBeast
+	sudo cp kernel /Leviathan
 
-cleanS: /RiverBeast/kernel
+cleanS: /Leviathan/kernel
 	sudo rm kernel
