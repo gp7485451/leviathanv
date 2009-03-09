@@ -8,12 +8,10 @@
 .set STACKSIZE, 0x4000          # that is, 16k.
 .comm stack, STACKSIZE, 32      # reserve 16k stack on a quadword boundary
 
-.code64
+.code32
 
-loader:
-	call kmain
-	
-	hlt  # halt on return
+loader:	
+	hlt  # do nothing for now
 
 
 
