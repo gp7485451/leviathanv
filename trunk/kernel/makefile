@@ -1,14 +1,24 @@
-AS = fasm
+CC = gcc
+AS = as
+LD = ld
+CFLAGS = -c -m32 -B /home/kristian/leviathanv/kernel -Wall -nostdlib -nostartfiles -nostdinc -fno-stack-protector -std=gnu99
+CSOURCES = *.c
+OBJFILES = startk.so *.o
+ASFLAGS = --32
+LDFLAGS = -m elf_i386 -T linker.ld
 
-all: build install clean
+all: kernel install clean
 
-build:
-	fasm kernel.asm kernel
+kernel:
+	$(CC) $(CFLAGS) $(CSOURCES)
+	$(AS) $(ASFLAGS) startk.s -o startk.so
+	$(LD) $(LDFLAGS) $(OBJFILES) -o kernel
 
-install: build
+install: kernel
 	sudo cp kernel /Leviathan
 
-clean: install
-	sudo rm *~
-	sudo rm kernel
-	sudo rm include/*~
+
+clean:
+	rm *.o *.so kernel
+	rm *~
+	
