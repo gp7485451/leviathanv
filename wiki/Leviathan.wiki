@@ -23,8 +23,9 @@ Leviathan achieves a lack of bloat through a Hybrid Kernel. This way, for speed 
   * Virtual Disk System - allows for multiple disks to be treated as one
   * Complete Device Driver Interface
   * Preemptive Multitasking
-  * ELF Executables
   * Flat Executables
+  * LEL Executables (Leviathan Executable Linkable)
+  * 32/64 bit mode switching
  
 *Planned For Version 1.5.0*
 ----
