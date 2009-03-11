@@ -38,10 +38,6 @@ texmem = cline;
 
 }
 
-        /* void update_cursor(int row, int col)
-         * by Dark Fiber
-         */
-
 
 void print_hex(unsigned int i)//thanks for this blound!
 {
