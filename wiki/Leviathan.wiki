@@ -25,7 +25,6 @@ Leviathan achieves a lack of bloat through a Hybrid Kernel. This way, for speed 
   * Preemptive Multitasking
   * Flat Executables
   * LEL Executables (Leviathan Executable Linkable)
-  * 32/64 bit mode switching
  
 *Planned For Version 1.5.0*
 ----
