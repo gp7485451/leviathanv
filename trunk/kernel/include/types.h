@@ -12,3 +12,5 @@
 #define cast_int(x) ((int) (x))
 #define cast_intp(x) ((int*) (x))
 #define cast_voidp(x) ((void*) (x))
+
+#define PACKED __attribute__((packed))

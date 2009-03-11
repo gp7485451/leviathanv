@@ -6,7 +6,7 @@
 #include <string.h>
 #include <task.h>
 
-void kmain()
+void kmain(void* mbd, unsigned int magic)
 {
 clear_screen();
 set_color(WHITE);

@@ -20,5 +20,5 @@ install: kernel
 
 clean:
 	rm *.o *.so kernel
-	rm *~
+	rm *~ include/*~
 	
