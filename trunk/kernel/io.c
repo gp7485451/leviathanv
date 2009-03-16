@@ -50,3 +50,15 @@ void hlt()
 {
 asm volatile ("hlt");
 }
+
+unsigned int read_cr2()
+{
+unsigned int ret;
+asm volatile ("mov %%cr2,%%eax":"=a" (ret));
+return ret;
+}
+
+void write_cr2(unsigned int cr2)
+{
+asm volatile ("mov %%eax,%%cr2": : "a"(cr2));
+}

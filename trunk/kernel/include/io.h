@@ -7,3 +7,5 @@ unsigned int read_cr0();//read the value in cr0
 void write_cr0(unsigned int cr0);//write a value into cr0
 unsigned int read_cr3();//read cr3
 void write_cr3(unsigned int cr3);//write a value int cr3
+unsigned int read_cr2();
+void write_cr2(unsigned int cr2);
