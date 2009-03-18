@@ -15,3 +15,5 @@ regs_t tregs;//task's register's states
 PID_T pid;//task id
 unsigned char priv; //privilegde level
 }task_t;// structure of a task entry
+
+

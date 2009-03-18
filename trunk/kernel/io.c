@@ -62,3 +62,16 @@ void write_cr2(unsigned int cr2)
 {
 asm volatile ("mov %%eax,%%cr2": : "a"(cr2));
 }
+
+unsigned int read_cr4()
+{
+unsigned int ret;
+asm volatile ("mov %%cr4,%%eax":"=a" (ret));
+return ret;
+}
+
+void write_cr4(unsigned int cr4)
+{
+asm volatile ("mov %%eax,%%cr4": : "a"(cr4));
+}
+
