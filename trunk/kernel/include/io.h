@@ -1,5 +1,5 @@
-__inline__ void outb(unsigned short port, unsigned char val);//write byte to port
-__inline__ unsigned char inb(unsigned short port);//read byte to port port
+void outb(unsigned short port, unsigned char val);//write byte to port
+unsigned char inb(unsigned short port);//read byte to port port
 void cli();//clear ints
 void sti();//set ints
 void hlt();//halt the cpu

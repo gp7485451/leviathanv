@@ -25,6 +25,7 @@ print_int((mbd->mem_low+mbd->mem_high));
 kprint(" KB\n");
 
 kprint("Paging...\n");
+mem_init();
 
 }
 
