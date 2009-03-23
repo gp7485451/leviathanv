@@ -26,7 +26,7 @@ u32int ReceiveSig(PID_T sender_id);
 {{{
 u8int OpenSigLine(PID_T pid);//error if process doesn't exist
 }}}
----
+----
 
 The first function, SendSig, is very simple to figrue out. It sends a signal sig to a process with a Process ID reciever_id. The next function, ReceiveSig, is even simpler and all it does is return a signal from a process sender_id. Lastly, OpenSigLine is a function that must be called by both processes before they can even begin to send and receive signals. This way, viruses or other malicious software cannot send a signal to a process that was not meant to communicate with it. Function 1 and 3 both return 0 on error.
 ----
