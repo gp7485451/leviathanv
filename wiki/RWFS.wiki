@@ -53,12 +53,11 @@ typedef struct
 {
     char name[20];
     unsigned int owner_idbase;
-    unsigned int owner_idcalc;	
+    unsigned int owner_idcalc;  
     unsigned char system;//bits the system uses for characteristics
-    unsigned char hour;
-    unsigned char min;
     unsigned int parent_idbase;//id base of the parent folder
     unsigned int parent_idcalc;//id calc of the parent folder
+    unsigned int date;//last date edited in seconds past since (12PM Jan 1 2000)
     unsigned int num_barray_blks;// number of block entry array blocks (they are always consecutive)
     unsigned int blocksection;//the blocksection the array is in
     unsigned int blockstart;//first block in the array
