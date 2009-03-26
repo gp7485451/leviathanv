@@ -30,7 +30,7 @@ typedef struct
     unsigned int   num_file_entry_sectors;
     unsigned int   num_dir_struct_entry_sectors;
     unsigned int   num_free_block_sectors;
-    unsigned int   num_sec;//number of sectors in the first blocksection
+    unsigned int   num_sec;//number of sectors in the last blocksection
 }FS_DESCRIPTOR;//structure that defines a filesystems characteristics
 
 typedef struct
