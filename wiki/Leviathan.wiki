@@ -13,7 +13,7 @@ Leviathan achieves a lack of bloat through a Hybrid Kernel. This way, for speed 
 ==Design Doc Sections==
   * [http://code.google.com/p/leviathanv/wiki/RWFS RWFS Design]
   * [http://code.google.com/p/leviathanv/wiki/ApplicationSystemCalls Application System Calls]
-
+  * [http://code.google.com/p/leviathanv/wiki/DeviceSystem Device System] 
 =Intended OS Features=
 
 *Planned For Version 1.0.0*
