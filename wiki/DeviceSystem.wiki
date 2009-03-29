@@ -1,0 +1,6 @@
+#summary Device Driver Interface
+
+= Introduction =
+
+Most microkernels take a heavy performance hit,because of the way they handle device I/O. All device drivers are separate processes that manage devices. Leviathan improves the performance of the system by only loading and running servers when requested by a process. After all processes release the device, it can be unloaded until the next request.
+
