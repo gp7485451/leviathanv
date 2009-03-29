@@ -10,9 +10,10 @@
 #define FREE 0x00
 #define USED 0x01
 #define DEAD 0xDE     //non existant physical memory
-typedef unsigned int PT_ADDR;//page table address loaded in cr3
 typedef unsigned int PDE_T;//page directory entry type
 typedef unsigned int PTE_T;//pagee table entry type
+
+
 
 unsigned int get_tmem();//get total amount of available memory in kb
 void* kalloc_frame();//allocates a single page frame for use

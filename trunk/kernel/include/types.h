@@ -15,4 +15,7 @@
 
 #define PACKED __attribute__((packed))
 
+#define TRUE 0x1
+#define FALSE 0x0
+
 

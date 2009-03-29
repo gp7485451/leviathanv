@@ -12,7 +12,9 @@ all: kernel install clean
 kernel:
 	$(CC) $(CFLAGS) $(CSOURCES)
 	$(AS) $(ASFLAGS) startk.s -o startk.so
+	nasm -f elf32 idt.asm -o idta.o
 	$(LD) $(LDFLAGS) $(OBJFILES) -o kernel
+
 
 install: kernel
 	sudo cp kernel /Leviathan
