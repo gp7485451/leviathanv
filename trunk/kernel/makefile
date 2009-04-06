@@ -1,20 +1,23 @@
-CC = g++
+CC = gcc
 AS = nasm
 LD = ld
-SOURCEDIR = /home/kristian/Desktop/Leviathan/kernel
-CFLAGS = -nostartfiles -nostdinc -fno-stack-protector -c -B $(SOURCEDIR) -m64 -fno-exceptions -fno-rtti -nostdlib -nodefaultlibs
-LDFLAGS = -m elf_x86_64 -T linker.ld
+SOURCEDIR = /home/kristian/leviathanv/kernel #replace with whatever the kernel directory is
+CFLAGS = -nostartfiles -nostdinc -fno-stack-protector -c -B $(SOURCEDIR) -m32 -nostdlib -nodefaultlibs
+LDFLAGS = -m elf_i386 -T linker.ld
 
-CSOURCES = kmain.cpp
+CSOURCES = kmain.c
 ASOURCES = loader.asm
 OBJSOURCES = loader.o kmain.o
 
-all: build clean
+all: build install clean
 
 build:
 	$(CC) $(CFLAGS) $(CSOURCES)
-	$(AS) -f elf64 $(ASOURCES)
+	$(AS) -f elf32 $(ASOURCES)
 	$(LD) $(LDFLAGS) $(OBJSOURCES) -o kernel 
+
+install:
+	sudo cp kernel /Leviathan/kernel
 
 clean:
 	rm *.o 

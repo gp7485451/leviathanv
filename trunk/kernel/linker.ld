@@ -4,6 +4,7 @@ SECTIONS{
     . = 0x00100000;
 
     .text :{
+	text_start = .;
         *(.text)
     }
 
@@ -12,13 +13,9 @@ SECTIONS{
     }
 
 .data ALIGN (0x1000) : {
-   start_ctors = .;
-   *(.ctor*)
-   end_ctors = .;
-   start_dtors = .;
-   *(.dtor*)
-   end_dtors = .;
+
    *(.data)
+   end_data = .;
 }
 
 
@@ -28,7 +25,7 @@ SECTIONS{
         *(.bss)
         ebss = .;
     }
-
+endkernel = .;
 
 }
 
