@@ -12,7 +12,7 @@ Signals are numbers sent between process that can be interpreted however an appl
 ----
 1.
 {{{
-u8int SendSig( PID_T reciever_id,u32_t sig);//error if Signal Line isn't open
+u8int SendSig( PID_T reciever_id,u64int sig);//error if Signal Line isn't open
 }}}
 
 2.
