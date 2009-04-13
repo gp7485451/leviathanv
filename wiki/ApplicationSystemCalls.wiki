@@ -12,19 +12,19 @@ Signals are numbers sent between process that can be interpreted however an appl
 ----
 1.
 {{{
-bool SendSig( PID_T reciever_id,u32_t sig);//error if Signal Line isn't open
+byte SendSig( PID_T reciever_id,u32_t sig);//error if Signal Line isn't open
 }}}
 
 2.
 
 {{{
-u32int ReceiveSig(PID_T sender_id);
+u64int ReceiveSig(PID_T sender_id);
 }}}
 
 3.
 
 {{{
-bool OpenSigLine(PID_T pid);//error if process doesn't exist
+byte OpenSigLine(PID_T pid);//error if process doesn't exist
 }}}
 ----
 
