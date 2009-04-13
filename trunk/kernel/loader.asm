@@ -17,13 +17,11 @@ MultiBootHeader:
 
 
 ; reserve initial kernel stack space
-STACKSIZE equ 0x4000                  ; that's 16k.
+STACKSIZE equ 0x4000                  
 
 use32
 loader:
    mov esp, stack+STACKSIZE        ; set up the stack
-   push eax                        ; Multiboot magic number
-   push ebx                        ; Multiboot info structure
    call kmain
 
    hlt                             ; halt machine should kernel return
