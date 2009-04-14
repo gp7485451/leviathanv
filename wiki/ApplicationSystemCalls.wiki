@@ -30,3 +30,17 @@ u8int OpenSigLine(PID_T pid);//error if process doesn't exist
 
 The first function, SendSig, is very simple to figrue out. It sends a signal sig to a process with a Process ID reciever_id. The next function, ReceiveSig, is even simpler and all it does is return a signal from a process sender_id. Lastly, OpenSigLine is a function that must be called by both processes before they can even begin to send and receive signals. This way, viruses or other malicious software cannot send a signal to a process that was not meant to communicate with it. Function 1 and 3 both return 0 on error.
 ----
+
+=Device Communication=
+Applications communicate with modules and servers to interact with devices. All modules do is provide functions for applications to work with devices. Servers are told what to do through messages and signals.
+----
+==Modules==
+1.
+{{{
+u8int AccessDevice(char* name);//let us use a specific device
+}}}
+
+2.
+{{{
+u8int DeviceCall(u32int func,void* params,u32int size);// call a function
+}}}
