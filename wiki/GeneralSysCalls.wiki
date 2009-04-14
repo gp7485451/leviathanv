@@ -1,14 +1,12 @@
 #summary General explanation of system calls
 
 = Introduction =
-This section intends to explain how system calls are generally implemented in the kernel. There are three classes of system calls in the kernel:
+This section intends to explain how system calls are generally implemented in the kernel. There are two classes of system calls in the kernel:
   * [http://code.google.com/p/leviathanv/wiki/ApplicationSystemCalls Application]
-  * [http://code.google.com/p/leviathanv/wiki/ModuleCalls Module]
   * Server
 All calls are done through interrupts, with one class corresponding to a single interrupt. 
 
 = Details =
 Here are the interrupts that correspond to each class:
   * Application - 0x70
-  * Module - 0x71
   * Server - 0x72
