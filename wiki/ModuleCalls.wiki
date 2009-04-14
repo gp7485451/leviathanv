@@ -1,0 +1,12 @@
+#summary Module System Functions
+
+= Introduction =
+
+This page contains the description for all the module system calls.
+
+=Functions=
+
+{{{
+u8int register_dev(char* name);//register itself as a module returns true on success
+}}}
+
