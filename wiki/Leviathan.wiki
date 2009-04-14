@@ -12,6 +12,7 @@ Leviathan achieves a lack of bloat through a Modular/Micro Kernel. This way, for
 
 ==Design Doc Sections==
   * [http://code.google.com/p/leviathanv/wiki/RWFS RWFS Design]
+  * [http://code.google.com/p/leviathanv/wiki/GeneralSysCalls General System Calls]
   * [http://code.google.com/p/leviathanv/wiki/ApplicationSystemCalls Application System Calls]
   * [http://code.google.com/p/leviathanv/wiki/DeviceSystem Device System] 
 =Intended OS Features=
