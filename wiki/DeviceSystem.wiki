@@ -2,5 +2,8 @@
 
 = Introduction =
 
-Most microkernels take a heavy performance hit,because of the way they handle device I/O. All device drivers are separate processes that manage devices. Leviathan improves the performance of the system by only loading and running servers when requested by a process. After all processes release the device, it can be unloaded until the next request.
-
+Most microkernels take a heavy performance hit,because of the way they handle device I/O. All device drivers are separate processes that manage devices. Leviathan improves the performance of the system by only loading and running servers when requested by a process. After all processes release the device, it can be unloaded until the next request. Leviathan also uses a module/server model, for certain things where speed is a must a module can be linked with the kernel.
+----
+==Modules==
+----
+==Servers==
