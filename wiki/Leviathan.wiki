@@ -1,5 +1,5 @@
 #summary Design Document
-#labels Phase-Design
+#labels Phase-Design,Featured
 Copyright (C) 2009 Kristian Hart
 = Introduction =
 
