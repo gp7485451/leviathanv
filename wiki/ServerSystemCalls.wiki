@@ -1,3 +1,9 @@
 #summary Server Functions and Descriptions
 
 = Function List And Description =
+1.
+{{{
+u8int ServerRegDevice(char* name);//register itself as a device
+}}}
+
+This function registers the server as a device, the name parameter is used by applications and other servers to access the device. This returns false if the program is not a root application.
