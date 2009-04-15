@@ -8,4 +8,5 @@ Most microkernels take a heavy performance hit,because of the way they handle de
 ==Servers==
 
 Like most microkernels servers go through the kernel to manage specific devices. Servers use the server class interrupts for this. Here are the server specific functions:
-  * 
+
+  * [http://code.google.com/p/leviathanv/wiki/ServerSystemCalls Server]
