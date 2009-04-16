@@ -19,7 +19,7 @@ Leviathan achieves a lack of bloat through a Microkernel. This way if a feature 
 
 *Planned For Version 1.0.0*
 ----
-  * RWFS File System Module - 500 million exabytes of possible storage!
+  * RWFS File System Server - 500 million exabytes of possible storage!
   * Virtual File System - many filesystems can be read
   * Virtual Disk System - allows for multiple disks to be treated as one
   * Complete Device Driver Interface
