@@ -1,6 +1,8 @@
 #summary Server Functions and Descriptions
 
 = Function List And Description =
+
+==Server Registration==
 1.
 {{{
 u8int ServerRegDevice(char* name);//register itself as a device
