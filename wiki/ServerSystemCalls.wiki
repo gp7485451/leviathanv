@@ -21,3 +21,11 @@ u8int ServerOpenLine();//opens the next requesting processes to communicate with
 }}}
 
 Function will enable the server to communicate with the next process that wants to use it. It returns false if there are no processes wanting to use it.
+
+==Hardware Communication==
+
+1.
+
+{{{
+u8int ServerCaptPort(u16int port);//captures a port for communication with hardware
+}}}
