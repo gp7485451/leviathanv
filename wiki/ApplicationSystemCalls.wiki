@@ -35,3 +35,9 @@ The first function, SendSig, is very simple to figrue out. It sends a signal sig
 
 Applications have a special set of system calls to enable communication with servers. Other than enabling communication, applications communicate with servers just like they communicate with other processes.
 
+1.
+
+{{{
+PID_T GetDeviceId(char* device);
+}}}
+This function returns the process id of the device the program wishes to access. This id is used to open sig and message lines between the application and the server.
