@@ -1,0 +1,5 @@
+#summary Explains How Physical Memory Is Managed
+
+= Introduction =
+
+Leviathan uses a mixed byte map, pre-allocation algorithm to manage allocation of page frames.  
