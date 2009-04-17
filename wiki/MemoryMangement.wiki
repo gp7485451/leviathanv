@@ -2,4 +2,6 @@
 
 = Introduction =
 
-Leviathan uses a mixed byte map, pre-allocation algorithm to manage allocation of page frames. When the kernel first starts up, it detects the amount of physical memory available. It then divides this memory into physical page frames, the first page frame starting at the first frame after the kernel. Each pages allocation status is stored in an array as either a 1 (allocated) or a 0 (unallocated). To speed up allocation times, the kernel pre-allocates 10 pages at a time and stores their addresses in an array.  
+Leviathan uses a mixed byte map, pre-allocation algorithm to manage allocation of page frames. When the kernel first starts up, it detects the amount of physical memory available. It then divides this memory into physical page frames, the first page frame starting at the first frame after the kernel. Each pages allocation status is stored in an array as either a 1 (allocated) or a 0 (unallocated). To speed up allocation times, the kernel pre-allocates 10 pages at a time and stores their addresses in an array.
+
+==Virtual Memory==
