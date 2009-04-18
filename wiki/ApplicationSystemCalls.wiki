@@ -12,13 +12,13 @@ Signals are numbers sent between process that can be interpreted however an appl
 ----
 1.
 {{{
-u8int SendSig( PID_T receiver_id,u64int sig);//error if Signal Line isn't open
+u8int SendSig( PID_T receiver_id,u32int sig);//error if Signal Line isn't open
 }}}
 
 2.
 
 {{{
-u64int ReceiveSig(PID_T sender_id);
+u32int ReceiveSig(PID_T sender_id);
 }}}
 
 3.
@@ -49,13 +49,13 @@ u8int OpenMessageLine(PID_T pid);//error if process doesn't exist
 2.
 
 {{{
-void* RecieveMessage(PID_T sender_id,u64int size);
+void* RecieveMessage(PID_T sender_id,u32int size);
 }}}
 
 3.
 
 {{{
-u8int SendMessage(PID_T receiver_id,void* message,u64int size);//error if message line isn't open
+u8int SendMessage(PID_T receiver_id,void* message,u32int size);//error if message line isn't open
 }}}
 
 4.
