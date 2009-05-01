@@ -32,7 +32,27 @@ static pageframe_t kalloc_frame_int()
 
 pageframe_t kalloc_frame()
 {
+	static u8int allocate = 1;//whether or not we are going to allocate a new set of preframes
+	static u8int pframe = 0;
+        pageframe_t ret;
+	
+	if(pframe == 20)
+	{
+		allocate = 1;
+	}
 
+	if(allocate == 1)
+	{
+		for(int i = 0; i<20; i++)
+		{
+			pre_frames[i] = kalloc_frame_int();
+		}
+		pframe = 0;
+		allocate = 0;
+	}
+	ret = pre_frames[pframe];
+	pframe++;
+	return(ret);
 }
 
 void init_frame_alloc()
