@@ -31,7 +31,7 @@ void init_gdt();
 void mem_init();
 
 void init_frame_alloc();//initialize page frame allocation
-pageframe_t kalloc_frame_int();//returns the address of an allocated page frame
+static pageframe_t kalloc_frame_int();//returns the address of an allocated page frame
 pageframe_t kalloc_frame();//pops off a pre frame
 
 void memcpy(u8int *dest, u8int *src, u32int count);//general memory function

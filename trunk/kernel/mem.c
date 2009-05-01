@@ -8,14 +8,14 @@ void mem_init()
 }
 
 //////////////////////Frame Allocation////////////////////
-pageframe_t pre_frames[20];
+static pageframe_t pre_frames[20];
 u8int frame_map[1048319];//enough frames for 1mb mark to 4gb
 static u32int npages;//number of pages available
 pageframe_t startframe;
 extern mboot_info_t *mem_info;
 extern u32int endkernel;
 
-pageframe_t kalloc_frame_int()
+static pageframe_t kalloc_frame_int()
 {
 	u32int i = 0;
 	while(frame_map[i] != FREE)
