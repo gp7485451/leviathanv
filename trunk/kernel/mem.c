@@ -1,3 +1,5 @@
+//This fiel provides all the functions for managing physical memory
+
 #include <kernel.h>
 
 void mem_init()
@@ -9,7 +11,7 @@ void mem_init()
 
 //////////////////////Frame Allocation////////////////////
 static pageframe_t pre_frames[20];
-u8int frame_map[1048319];//enough frames for 1mb mark to 4gb
+static u8int frame_map[1048319];//enough frames for 1mb mark to 4gb
 static u32int npages;//number of pages available
 pageframe_t startframe;
 extern mboot_info_t *mem_info;
@@ -53,6 +55,16 @@ pageframe_t kalloc_frame()
 	ret = pre_frames[pframe];
 	pframe++;
 	return(ret);
+}
+
+void kfree_frame(pageframe_t a)
+{
+		pageframe_t p = (pageframe_t) 0x1000;
+		a = a - startframe;
+		a = a-p;
+		u32int index = (u32int)a;
+		frame_map[index] = FREE;
+
 }
 
 void init_frame_alloc()

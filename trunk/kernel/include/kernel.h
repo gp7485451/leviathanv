@@ -2,6 +2,7 @@
 #include <types.h>
 #include <video/textmode.h>
 #include <mem.h>
+#include <paging.h>
 
 typedef struct//multiboot info structure
 {
