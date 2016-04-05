@@ -1,0 +1,80 @@
+# Introduction #
+
+There are very few system calls needed for applications to function, and many functions of a system can be added in user land. However, some functions are necessary for applications to communicate with the system and other programs.
+
+# Signals and Messages #
+Signals are numbers sent between process that can be interpreted however an application deems necessary. Messages are much the same except they can send variable length amounts of data (structures),and are slower than signals. All communication between applications is done through shared pages. This way sending and receiving data can be done by a simple write to memory.
+
+## Signals ##
+
+---
+
+1.
+```
+u8int SendSig( PID_T receiver_id,u32int sig);//error if Signal Line isn't open
+```
+
+2.
+
+```
+u32int ReceiveSig(PID_T sender_id);
+```
+
+3.
+
+```
+u8int OpenSigLine(PID_T pid);//error if process doesn't exist
+```
+
+4.
+
+```
+u8int CloseSignLine(PID_T pid);//error if it's not open in the first place
+```
+
+
+
+---
+
+
+The first function, SendSig, is very simple to figrue out. It sends a signal sig to a process with a Process ID reciever\_id. The next function, ReceiveSig, is even simpler and all it does is return a signal from a process sender\_id. Lastly, OpenSigLine is a function that must be called by both processes before they can even begin to send and receive signals. This way, viruses or other malicious software cannot send a signal to a process that was not meant to communicate with it. Function 1 and 3 both return 0 on error.
+
+## Messages ##
+
+1.
+
+```
+u8int OpenMessageLine(PID_T pid);//error if process doesn't exist
+```
+
+2.
+
+```
+void* RecieveMessage(PID_T sender_id,u32int size);
+```
+
+3.
+
+```
+u8int SendMessage(PID_T receiver_id,void* message,u32int size);//error if message line isn't open
+```
+
+4.
+
+```
+u8int CloseMessageLine(PID_T pid);//error if it's not open in the first place
+```
+
+
+---
+
+## Device Specific ##
+
+Applications have a special set of system calls to enable communication with servers. Other than enabling communication, applications communicate with servers just like they communicate with other processes.
+
+1.
+
+```
+PID_T GetDeviceId(char* device);
+```
+This function returns the process id of the device the program wishes to access. This id is used to open sig and message lines between the application and the server.
